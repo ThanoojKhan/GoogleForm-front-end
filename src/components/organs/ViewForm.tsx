@@ -14,17 +14,22 @@ interface Field {
     options?: string[];
 }
 
+interface Form {
+    title: string;
+    fields: Field[];
+}
+
 const ViewForm = () => {
-    const { formId } = useParams();
-    const [form, setForm] = useState({ title: '', fields: [] as Field[] });
-    const [formResponses, setFormResponses] = useState({});
+    const { formId } = useParams<{ formId: string }>(); 
+    const [form, setForm] = useState<Form>({ title: '', fields: [] });
+    const [formResponses, setFormResponses] = useState<Record<string, string>>({}); 
     const [submissionStatus, setSubmissionStatus] = useState('');
 
     const handleFieldChange = (name: string, value: string) => {
         setFormResponses({ ...formResponses, [name]: value });
     };
 
-    const handleSubmit = async (event: any) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => { 
         event.preventDefault();
 
         try {
@@ -45,13 +50,19 @@ const ViewForm = () => {
 
     useEffect(() => {
         const fetchForm = async () => {
-            const response = await axiosInstance.get(`/api/forms/${formId}`);
-            setForm(response.data);
+            try {
+                const response = await axiosInstance.get<Form>(`/api/forms/${formId}`); 
+                setForm(response.data);
+            } catch (error) {
+                console.error('Error fetching form', error);
+            }
         };
         fetchForm();
     }, [formId]);
 
     const renderField = (field: Field, index: number) => {
+        const title = field.required ? `${field.name}*` : field.name;
+
         switch (field.type) {
             case 'text':
                 return (
@@ -60,6 +71,7 @@ const ViewForm = () => {
                         field={field}
                         onFieldChange={(value: string) => handleFieldChange(field.name, value)}
                         className="field textInput"
+                        title={title}
                     />
                 );
             case 'radio':
@@ -69,6 +81,7 @@ const ViewForm = () => {
                         field={field}
                         onFieldChange={(value: string) => handleFieldChange(field.name, value)}
                         className="field"
+                        title={title}
                     />
                 );
             case 'dropdown':
@@ -78,6 +91,7 @@ const ViewForm = () => {
                         field={field}
                         onFieldChange={(value: string) => handleFieldChange(field.name, value)}
                         className="field selectInput"
+                        title={title}
                     />
                 );
             case 'checkbox':
@@ -87,6 +101,7 @@ const ViewForm = () => {
                         field={field}
                         onFieldChange={(value: string) => handleFieldChange(field.name, value)}
                         className="field"
+                        title={title}
                     />
                 );
             default:

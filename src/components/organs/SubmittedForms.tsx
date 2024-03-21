@@ -1,21 +1,18 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from "../../hooks/redux-hooks/useAppDispatch";
 import { fetchForms } from "../../store/slice/formSlice";
 import { RootState } from "../../store/store";
-import "../../assets/styles/submittedForms.css"
+import "../../assets/styles/submittedForms.css";
 
 const SubmittedForms = () => {
-    const dispatch = useAppDispatch()
+    const dispatch = useDispatch();
     const forms = useSelector((state: RootState) => state.form.forms);
     const formStatus = useSelector((state: RootState) => state.form.status);
     const formError = useSelector((state: RootState) => state.form.error);
 
     useEffect(() => {
-        if (formStatus === 'idle') {
-            dispatch(fetchForms());
-        }
+        dispatch(fetchForms() as any)
     }, [dispatch]);
 
     let content;
@@ -25,7 +22,7 @@ const SubmittedForms = () => {
     } else if (formStatus === 'succeeded') {
         content = (
             <ul className="formList">
-                {forms?.map((form, index) => (
+                {forms && Array.isArray(forms) && forms.map((form, index) => (
                     <li className="formItem" key={index}>
                         <Link to={`/forms/${form?._id}`}>
                             <h2>{form?.title}</h2>
