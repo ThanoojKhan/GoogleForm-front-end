@@ -11,14 +11,14 @@ h1 {
 
 .formList {
     width: 100%;
-    max-width: 600px;
+    max-width: 50%;
     list-style: none;
     padding: 0;
 }
 
 .formItem {
     margin-bottom: 20px;
-    background-color: #f8f8f8;
+    background-color: #e2abab;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -30,7 +30,7 @@ h1 {
 }
 
 .formItem h2:hover {
-    color: #069218; /* Change color on hover */
+    color: #069218;
 }
 
 .errorMessage {

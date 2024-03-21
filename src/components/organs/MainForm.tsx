@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import CheckBoxField from "../../components/CheckBoxField";
-import DropDownField from "../../components/DropDownField";
-import RadioButtonField from "../../components/RadioButtonField";
-import TextField from "../../components/TextField";
+import CheckBoxField from "../atom/CheckBoxField";
+import DropDownField from "../atom/DropDownField";
+import RadioButtonField from "../atom/RadioButtonField";
+import TextField from "../atom/TextField";
 import { useAppDispatch } from "../../hooks/redux-hooks/useAppDispatch";
 import { fetchForms, submitForm } from "../../store/slice/formSlice";
 import { RootState } from "../../store/store";

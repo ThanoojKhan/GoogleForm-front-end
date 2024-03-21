@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import "../../assets/styles/landing.css"
+import "../../assets/styles/navbar.css"
 
 const Landing = () => {
     return (

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch } from "../../hooks/redux-hooks/useAppDispatch";
 import { fetchForms } from "../../store/slice/formSlice";
 import { RootState } from "../../store/store";
-import Landing from "./Landing";
 import "../../assets/styles/submittedForms.css"
 
 const SubmittedForms = () => {
@@ -41,7 +40,6 @@ const SubmittedForms = () => {
 
     return (
         <div className="container">
-            <Landing />
             <h1>Forms</h1>
             {content}
         </div>

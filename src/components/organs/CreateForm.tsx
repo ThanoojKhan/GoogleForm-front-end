@@ -3,14 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import '../../assets/styles/createform.css'
-import CheckBoxField from "../../components/CheckBoxField"
-import DropDownField from "../../components/DropDownField"
-import RadioButtonField from "../../components/RadioButtonField"
-import TextField from "../../components/TextField"
+import CheckBoxField from "../atom/CheckBoxField"
+import DropDownField from "../atom/DropDownField"
+import RadioButtonField from "../atom/RadioButtonField"
+import TextField from "../atom/TextField"
 import { useAppDispatch } from "../../hooks/redux-hooks/useAppDispatch"
 import { createForm } from "../../store/slice/formSlice"
 import { RootState } from "../../store/store"
-import Landing from "./Landing"
 import { toast } from 'react-hot-toast';
 
 interface Field {
@@ -103,7 +102,6 @@ const CreateForm = () => {
 
     return (
         <div className='container'>
-            <Landing />
             <div style={{ display: "flex", justifyContent: 'center' }}>
                 <h1>Create Form</h1>
             </div>
