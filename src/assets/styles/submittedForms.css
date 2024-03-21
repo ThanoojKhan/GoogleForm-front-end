@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.formList {
+    width: 100%;
+    max-width: 600px;
+    list-style: none;
+    padding: 0;
+}
+
+.formItem {
+    margin-bottom: 20px;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.formItem h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.formItem h2:hover {
+    color: #069218; /* Change color on hover */
+}
+
+.errorMessage {
+    color: red;
+    font-size: 16px;
+    margin-top: 20px;
+}
