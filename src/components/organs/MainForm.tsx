@@ -43,7 +43,7 @@ const MainForm: React.FC = () => {
                         {form.fields.map((field: any) => {
                             switch (field.type) {
                                 case 'textbox':
-                                    return <TextField key={field._id} field={field} title={""} required={false} value={""} onChange={function (value: string): void {
+                                    return <TextField key={field._id} field={field} title={""} required={false} value={""} onChange={function (_value: string): void {
                                         throw new Error("Function not implemented.");
                                     } } className={""} />;
                                 case 'radio':
