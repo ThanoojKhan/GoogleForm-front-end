@@ -70,9 +70,9 @@ const ViewForm = () => {
                     <TextField
                         key={index}
                         field={field}
-                        onChange={(value: string) => handleFieldChange(field.name, value)}
+                        onFieldChange={(value: string) => handleFieldChange(field.name, value)}
                         className="field textInput"
-                        title={title} required={false} value={""}
+                        title={title}
                     />
                 );
             case 'radio':

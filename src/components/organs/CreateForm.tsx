@@ -67,22 +67,7 @@ const CreateForm = () => {
     const renderField = (field: Field, index: number) => {
         switch (field.type) {
             case 'text':
-                return (
-                    <TextField
-                        key={index}
-                        title={field.name}
-                        required={field.required}
-                        value={field.value || ''}
-                        onChange={(value: string) => {
-                            const updatedFields = [...form.fields];
-                            updatedFields[index].value = value;
-                            setForm({ ...form, fields: updatedFields });
-                        } } field={{
-                            name: '',
-                            required: false,
-                            options: undefined
-                        }} className={''}                    />
-                );
+                return <TextField key={index} field={field} title={''} className={''} />
             case 'dropdown':
                 return <DropDownField key={index} field={field} title={''} className={''} />;
             case 'checkbox':
