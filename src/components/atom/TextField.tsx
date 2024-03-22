@@ -10,12 +10,12 @@ interface TextFieldProps {
     onFieldChange?: (name: string, value: string) => void;
 }
 
-const TextField = ({ title, field, onFieldChange }: TextFieldProps) => {
+const TextField = ({ field, onFieldChange }: TextFieldProps) => {
 
 
     return (
         <>
-            <label>{title}</label>
+            <label>{field.name}</label>
             <input
                 type="text" name={field.name} required={field.required} onChange={(e) => onFieldChange && onFieldChange(field.name, e.target.value)}
             />
