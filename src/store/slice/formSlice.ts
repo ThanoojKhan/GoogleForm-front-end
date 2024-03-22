@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+// @ts-ignore
 import axiosInstance from '../../api/axiosInstance';
 
 interface FormState {
