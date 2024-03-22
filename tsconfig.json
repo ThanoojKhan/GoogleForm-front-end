@@ -7,6 +7,10 @@
       "DOM",
       "DOM.Iterable"
     ],
+    "typeRoots": [
+      "node_modules/@types",
+      "./typings"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
     /* Bundler mode */
@@ -20,7 +24,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "strictNullChecks": true
   },
   "include": [
     "src"

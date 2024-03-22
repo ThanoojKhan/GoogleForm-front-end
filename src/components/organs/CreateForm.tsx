@@ -1,16 +1,16 @@
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from "react";
+import { toast } from 'react-hot-toast';
 import { useSelector } from "react-redux";
 import '../../assets/styles/createform.css';
+import { useAppDispatch } from "../../hooks/redux-hooks/useAppDispatch";
+import { createForm } from "../../store/slice/formSlice";
+import { RootState } from "../../store/store";
 import CheckBoxField from "../atom/CheckBoxField";
 import DropDownField from "../atom/DropDownField";
 import RadioButtonField from "../atom/RadioButtonField";
 import TextField from "../atom/TextField";
-import { useAppDispatch } from "../../hooks/redux-hooks/useAppDispatch";
-import { createForm } from "../../store/slice/formSlice";
-import { RootState } from "../../store/store";
-import { toast } from 'react-hot-toast';
 
 interface Field {
     name: string;
