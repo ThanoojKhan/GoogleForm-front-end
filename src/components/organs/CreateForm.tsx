@@ -77,15 +77,18 @@ const CreateForm = () => {
                             const updatedFields = [...form.fields];
                             updatedFields[index].value = value;
                             setForm({ ...form, fields: updatedFields });
-                        }}
-                    />
+                        } } field={{
+                            name: '',
+                            required: false,
+                            options: undefined
+                        }} className={''}                    />
                 );
             case 'dropdown':
-                return <DropDownField key={index} field={field} />;
+                return <DropDownField key={index} field={field} title={''} className={''} />;
             case 'checkbox':
-                return <CheckBoxField key={index} field={field} />;
+                return <CheckBoxField key={index} field={field} title={''} className={''} />;
             case 'radio':
-                return <RadioButtonField key={index} field={field} />;
+                return <RadioButtonField key={index} field={field} title={''} className={''} />;
             default:
                 return null;
         }

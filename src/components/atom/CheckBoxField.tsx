@@ -4,6 +4,8 @@ interface FieldProps {
         required: boolean;
         options?: string[];
     };
+    title: string;
+    className: string;
     onFieldChange?: (name: string, value: string) => void;
 
 }

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+// @ts-ignore
 import axiosInstance from '../../api/axiosInstance';
+import '../../assets/styles/viewForm.css';
 import CheckBoxField from "../atom/CheckBoxField";
 import DropDownField from "../atom/DropDownField";
 import RadioButtonField from "../atom/RadioButtonField";
 import TextField from "../atom/TextField";
-import '../../assets/styles/viewForm.css';
 
 interface Field {
     name: string;
@@ -20,16 +21,16 @@ interface Form {
 }
 
 const ViewForm = () => {
-    const { formId } = useParams<{ formId: string }>(); 
+    const { formId } = useParams<{ formId: string }>();
     const [form, setForm] = useState<Form>({ title: '', fields: [] });
-    const [formResponses, setFormResponses] = useState<Record<string, string>>({}); 
+    const [formResponses, setFormResponses] = useState<Record<string, string>>({});
     const [submissionStatus, setSubmissionStatus] = useState('');
 
     const handleFieldChange = (name: string, value: string) => {
         setFormResponses({ ...formResponses, [name]: value });
     };
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => { 
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         try {
@@ -51,7 +52,7 @@ const ViewForm = () => {
     useEffect(() => {
         const fetchForm = async () => {
             try {
-                const response = await axiosInstance.get<Form>(`/api/forms/${formId}`); 
+                const response = await axiosInstance.get<Form>(`/api/forms/${formId}`);
                 setForm(response.data);
             } catch (error) {
                 console.error('Error fetching form', error);
@@ -69,9 +70,9 @@ const ViewForm = () => {
                     <TextField
                         key={index}
                         field={field}
-                        onFieldChange={(value: string) => handleFieldChange(field.name, value)}
+                        onChange={(value: string) => handleFieldChange(field.name, value)}
                         className="field textInput"
-                        title={title}
+                        title={title} required={false} value={""}
                     />
                 );
             case 'radio':

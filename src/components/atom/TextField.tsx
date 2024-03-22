@@ -1,16 +1,18 @@
-import { ChangeEvent } from 'react';
-
 interface TextFieldProps {
     title: string;
     required: boolean;
     value: string;
+    field: {
+        name: string;
+        required: boolean;
+        options?: string[];
+    };
+    className: string;
+    key: any;
     onChange: (value: string) => void;
 }
 
-const TextField: React.FC<TextFieldProps> = ({ title, required, value, onChange }: TextFieldProps) => {
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        onChange(e.target.value);
-    };
+const TextField = ({ title, required, value, onChange }: TextFieldProps) => {
 
     return (
         <>
@@ -20,7 +22,7 @@ const TextField: React.FC<TextFieldProps> = ({ title, required, value, onChange 
                 required={required}
                 value={value}
                 placeholder={title}
-                onChange={handleChange}
+                onChange={(e) => onChange && onChange(e.target.value)}
             />
         </>
     );
