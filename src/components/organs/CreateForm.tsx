@@ -89,7 +89,7 @@ const CreateForm = () => {
 
     useEffect(() => {
         if (formStatus === 'failed' && formError) {
-            toast?.error(`Error saving form: ${formError}`);
+            toast?.error(`${formError}`);
         }
     }, [formStatus, formError]);
 
